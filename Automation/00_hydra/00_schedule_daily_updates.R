@@ -90,10 +90,10 @@ scripts <- c('US_Virginia', 'USA_all_deaths', 'Netherlands', 'Estonia',
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # starting time for first schedule in hour and minutes
-h_ini <- 10
-m_ini <- 05
+h_ini <- 09
+m_ini <- 20
 # delay between scripts in minutes
-delay_time <- 10
+delay_time <- 5
 
 i <- 0
 for(c in scripts){
@@ -117,7 +117,7 @@ for(c in scripts){
 # for individual scheduling
 # ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-sched("Netherlands", tm = "11:31", email = auto_update_email, wd = auto_update_wd)
+sched("Germany_vaccine", tm = "15:20", email = auto_update_email, wd = auto_update_wd)
 
 
 #sch = "WEEKLY"
