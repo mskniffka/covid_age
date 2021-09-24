@@ -34,8 +34,10 @@ url <- "http://www.bccdc.ca/Health-Info-Site/Documents/BCCDC_COVID19_Dashboard_C
 
 download.file(url, destfile = data_source)
 # loading data
-df <- read_csv(data_source)
-
+#JD: read_csv lead to the session crashing
+#suspect that the file was getting to big, google said fread performs better for that
+#df <- read_csv(data_source)
+df <- fread(data_source)
 
 out <- 
   df %>% 

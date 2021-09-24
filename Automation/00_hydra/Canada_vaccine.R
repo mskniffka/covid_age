@@ -20,7 +20,11 @@ dir_n        <- "N:/COVerAGE-DB/Automation/Hydra/"
 #Read in data 
 
 url <- "https://health-infobase.canada.ca/src/data/covidLive/vaccination-coverage-byAgeAndSex.csv"
-IN<- read_csv(url)
+
+data_source <- paste0(dir_n, "Data_sources/", ctr, "/vaccine_age_",today(), ".csv")
+download.file(url, data_source)
+
+IN<- read_csv(data_source)
 
 
 #Process data 
@@ -133,12 +137,6 @@ write_rds(outfinal, paste0(dir_n, ctr, ".rds"))
 log_update(pp = ctr, N = nrow(outfinal))
 
 # now archive
-
-data_source <- paste0(dir_n, "Data_sources/", ctr, "/vaccine_age_",today(), ".csv")
-
-
-write_csv(IN, data_source)
-
 zipname <- paste0(dir_n, 
                   "Data_sources/", 
                   ctr,

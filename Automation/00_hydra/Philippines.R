@@ -57,14 +57,18 @@ drive_readme_url <- longurl::expand_urls(bit.ly_url)
 #I suggest to read all in and then selct on 
 
 #read in all files in folder 
+#JD: 23.09.2021: ? in gsub needed extra expression to be replaced 
+
 drive_id <- drive_readme_url$expanded_url %>% 
   gsub(pattern = "https://drive.google.com/drive/folders/",
-       replacement = "") %>% 
+       replacement = "")%>% 
   gsub(pattern = "?usp=sharing",
-       replacement = "") %>% 
-  googledrive::as_id() %>% 
+       replacement = "")%>% 
+  gsub(pattern = "\\?",
+       replacement = "")%>%
+  googledrive::as_id()%>% 
   drive_ls() %>% 
-  filter(grepl(name,pattern = "READ ME FIRST")) 
+  filter(grepl(name,pattern = "READ ME FIRST"))
 
 
 #select one with most recent date
@@ -106,6 +110,8 @@ drive_contents <-
        replacement = "") %>% 
   gsub(pattern = "?usp=sharing",
        replacement = "") %>% 
+  gsub(pattern = "\\?",
+       replacement = "")%>%
   googledrive::as_id() %>% 
   drive_ls() 
 
