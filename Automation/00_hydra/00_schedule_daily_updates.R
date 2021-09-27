@@ -117,7 +117,7 @@ for(c in scripts){
 # for individual scheduling
 # ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-sched("Canada_vaccine", tm = "11:20", email = auto_update_email, wd = auto_update_wd)
+sched("Canada_vaccine", tm = "14:40", email = auto_update_email, wd = auto_update_wd)
 
 
 #sch = "WEEKLY"
@@ -129,7 +129,7 @@ sched("Canada_vaccine", tm = "11:20", email = auto_update_email, wd = auto_updat
 # for deleting single task schedule
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# delete_sched("US_Indiana")
+#delete_sched("Finland")
 
 
 
