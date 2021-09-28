@@ -22,8 +22,8 @@ dir_n        <- "N:/COVerAGE-DB/Automation/Hydra/"
 url <- "https://health-infobase.canada.ca/src/data/covidLive/vaccination-coverage-byAgeAndSex.csv"
 
 data_source <- paste0(dir_n, "Data_sources/", ctr, "/vaccine_age_",today(), ".csv")
+options(timeout = 180)
 download.file(url, data_source)
-
 IN<- read_csv(data_source)
 
 

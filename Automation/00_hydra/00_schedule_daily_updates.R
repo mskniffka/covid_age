@@ -93,7 +93,7 @@ scripts <- c('US_Virginia', 'USA_all_deaths', 'Netherlands', 'Estonia',
 h_ini <- 09
 m_ini <- 20
 # delay between scripts in minutes
-delay_time <- 5
+delay_time <- 10
 
 i <- 0
 for(c in scripts){
@@ -128,11 +128,11 @@ sched("Canada_vaccine", tm = "14:40", email = auto_update_email, wd = auto_updat
 
 # for deleting single task schedule
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# taskscheduler_delete("COVerAGE-DB-automatic-daily-build")
+# taskscheduler_delete("COVerAGE-DB-every-8-hour-inputDB-updates")
+
 
 #delete_sched("Finland")
-
-
-
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
