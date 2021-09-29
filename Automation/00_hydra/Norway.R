@@ -25,13 +25,17 @@ ss_db <- rubric %>%
 
 # Read in current Norway data ####
 ##################################
+#JD: Adding the data read in here, just leave the name db_drive, to avoid changing it in the whole script
+
+db_drive <- read_rds(paste0(dir_n, ctr, ".rds"))%>% 
+  mutate(Date = dmy(Date))
 
 # db_drive <- get_country_inputDB("NO") %>% 
-#   select(-Short)
-
-db_drive <- read_sheet("https://docs.google.com/spreadsheets/d/1b-vhrc3ZAW-Mp5FU31QI-1tRj3r0E5Ew-Nkb-fHqpmA/", 
-                       sheet = "database") %>% 
-  mutate(Date = dmy(Date))
+# select(-Short)
+# 
+# db_drive <- read_sheet("https://docs.google.com/spreadsheets/d/1b-vhrc3ZAW-Mp5FU31QI-1tRj3r0E5Ew-Nkb-fHqpmA/", 
+#                        sheet = "database") %>% 
+#   mutate(Date = dmy(Date))
 
 # Detect files to capture ####
 ##############################
@@ -229,7 +233,7 @@ out <-
 # Push to Drive ####
 ####################
 
-#write_sheet(out,
+# write_sheet(out,
 #            ss_i,
 #            sheet = "database")
 

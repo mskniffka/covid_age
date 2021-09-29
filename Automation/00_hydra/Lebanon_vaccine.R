@@ -17,7 +17,7 @@ if (!"email" %in% ls()){
 
 # info country and N drive address
 
-ctr          <- "Lebanon" # it's a placeholder
+ctr          <- "Lebanon_vaccine" # it's a placeholder
 dir_n        <- "N:/COVerAGE-DB/Automation/Hydra/"
 
 
@@ -25,21 +25,21 @@ dir_n        <- "N:/COVerAGE-DB/Automation/Hydra/"
 drive_auth(email = email)
 gs4_auth(email = email)
 
-# Drive urls
-rubric <- get_input_rubric() %>% filter(Short == "LB")
-
-ss_i <- rubric %>% 
-  dplyr::pull(Sheet)
-
-ss_db <- rubric %>% 
-  dplyr::pull(Source)
-
-# reading data from Drive and last date entered 
-
-In_drive <- get_country_inputDB("LB")%>% 
-  select(-Short)%>%
-  mutate(AgeInt= as.character(AgeInt))%>%
-  subset(Measure!= "Vaccinations")
+# # Drive urls
+# rubric <- get_input_rubric() %>% filter(Short == "LB")
+# 
+# ss_i <- rubric %>% 
+#   dplyr::pull(Sheet)
+# 
+# ss_db <- rubric %>% 
+#   dplyr::pull(Source)
+# 
+# # reading data from Drive and last date entered 
+# 
+# In_drive <- get_country_inputDB("LB")%>% 
+#   select(-Short)%>%
+#   mutate(AgeInt= as.character(AgeInt))%>%
+#   subset(Measure!= "Vaccinations")
 
 
 #Read in manually downloaded data from drive until download can be automated 
@@ -163,17 +163,13 @@ Sex_Out= Sex_in %>%
 
 
 #Put dataframes together
-Out<- bind_rows(In_drive,
-                Sex_Out,
+Out<- bind_rows(Sex_Out,
                 Age_Out)
 
 
-# upload to Drive, overwrites
+#save vaccines on N 
 
-write_sheet(Out, 
-            ss = ss_i, 
-            sheet = "database")
-
+write_rds(Out, paste0(dir_n, ctr, ".rds"))
 
 #log_update("Bulgaria", N = nrow(BG_out))
 
