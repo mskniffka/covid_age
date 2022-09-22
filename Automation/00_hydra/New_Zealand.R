@@ -24,7 +24,7 @@ ss_db    <- rubric_i %>% dplyr::pull(Source)
 # TR:
 # current operation just appends cases. I'd prefer to re-tabulate the full case history from the spreadsheet.
 
-# reading data from Montreal and last date entered 
+# reading data from Drive and last date entered 
 db_drive <- read_sheet(ss = ss_i, sheet = "database")
 # db_drive <- db_drive %>% 
 #   mutate(Sex = case_when(
@@ -75,6 +75,7 @@ if (date_f > last_date_drive){
     mutate(Age = substr(Age, 1,2),
            Age = case_when(
              Age == "Un" ~ "UNK",
+             Age == "0 " ~ "0",
              TRUE ~ Age
            ),
            Sex = case_when(
@@ -260,8 +261,8 @@ all_the_tables <- html %>%
     html_table(fill = TRUE, 
                header=TRUE, 
                convert = FALSE)
-  db_ta <- all_the_tables[[12]] 
-  db_ts <- all_the_tables[[13]] 
+  db_ta <- all_the_tables[[10]] 
+  db_ts <- all_the_tables[[11]] 
   
   
   db_ta2 <- db_ta %>% 
